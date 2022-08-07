@@ -6,6 +6,7 @@ import java.util.Scanner;//Scanner class is to get User input
 public class AddressBook implements IAddressBook {
     static Scanner input = new Scanner(System.in);
     ArrayList<Contact> contact = new ArrayList<>();//ArrayList Declaration
+
     @Override
     public void createContact() {
         Contact personDetails = new Contact();
@@ -21,13 +22,15 @@ public class AddressBook implements IAddressBook {
         personDetails.setState(input.next());
         System.out.println("Enter Your Zip code: ");
         personDetails.setZip(input.nextInt());
-        System.out.println("Enter Your Email Id: ");
-        personDetails.setEmail(input.next());
         System.out.println("Enter Your Mobile Number: ");
         personDetails.setPhoneNumber(input.nextLong());
+        System.out.println("Enter Your Email Id: ");
+        personDetails.setEmail(input.next());
         contact.add(personDetails);
+        System.out.println("Contact added successfully.");
     }
 
+    @Override
     public void editContact() {
         System.out.println("\nEnter First Name of person You want to edit :- ");
         String firstName = input.next();
@@ -81,6 +84,26 @@ public class AddressBook implements IAddressBook {
                             break;
                     }
                     System.out.println("Are you wish to edit other Address fields: Y?N");
+                    userChoice = input.next();
+                } while (userChoice.toUpperCase().equals("Y"));
+                return;
+            }
+        }
+        System.out.println("Please enter the correct first name");
+    }
+
+    @Override
+    public void deleteContact() {
+        System.out.println("\nEnter First Name of person You want to delete :- ");
+        String firstName = input.next();
+        String userChoice;
+
+        for (int i = 0; i < contact.size(); i++) {
+            if (contact.get(i).getFirstName().equals(firstName)) {
+                do {
+                    contact.remove(i);
+                    System.out.println("Contact deleted");
+                    System.out.println("Are you wish to delete other Address fields: Y?N");
                     userChoice = input.next();
                 } while (userChoice.toUpperCase().equals("Y"));
                 return;

@@ -1,5 +1,5 @@
-/* Ability to edit existing contact
-using their name
+/* Ability to delete contact
+using person's name
 */
 
 package com.bridgelabz;
@@ -13,14 +13,17 @@ public class AddressBookMain {
         char choice;
         IAddressBook addressBook = new AddressBook();
         do {
-            System.out.println("Select your Option: \n1.Add new Contact \n2.Edit Contact");
+            System.out.println("Select your Option: \n1.Add new Contact \n2.Edit Contact \n3.Delete Contact");
             int option = input.nextInt();
             switch (option) {
                 case 1:
-                    addressBook.createContact();//Calling createContact method
+                    addressBook.createContact();//Calling createContact method to create new contact
                     break;
                 case 2:
-                    addressBook.editContact();//Calling editContact method
+                    addressBook.editContact();//Calling editContact method to edit existing contact
+                    break;
+                case 3:
+                    addressBook.deleteContact();//Calling deleteContact method to delete a contact
                     break;
             }
             System.out.println("Are you wish to continue:  Y?N");
