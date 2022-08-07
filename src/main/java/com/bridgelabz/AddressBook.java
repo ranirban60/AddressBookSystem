@@ -113,6 +113,20 @@ public class AddressBook implements IAddressBook {
     }
 
     @Override
+    public void contactList() {
+        if (contact.isEmpty()) {
+            System.out.println("Your address book is empty.");
+            return;
+        }
+        System.out.println("\n Address Book:");
+        for (Contact person : contact)
+        {
+            System.out.println("contact" + person.getFirstName());
+        }
+
+    }
+
+    @Override
     public String toString() {
         return "AddressBook{" +
                 "contact=" + contact +
