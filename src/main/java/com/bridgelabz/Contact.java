@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 public class Contact {
-        Contact(){
+       public Contact(){
 
         }
 

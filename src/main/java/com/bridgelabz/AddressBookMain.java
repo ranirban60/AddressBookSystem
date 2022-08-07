@@ -1,48 +1,31 @@
+/* Ability to edit existing contact
+using their name
+*/
+
 package com.bridgelabz;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-    public class AddressBookMain {
-        ArrayList<Contact> addressBook = new ArrayList<>();
-        public static void main(String[] args) {
-            System.out.println("Welcome to AddressBook System");
-            AddressBookMain addressBookMain = new AddressBookMain();
-            addressBookMain.addContact();
-        }
-        //Create a new Contact Object and adds to Addressbook
-        /* create a new Contact Object
-         */
-        public void addContact(){
-            Contact contact = new Contact();
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Enter First Name");
-            String firstName = sc.nextLine();
-            contact.setFirstName(firstName);
-            System.out.println("Enter Last Name");
-            String lastName = sc.nextLine();
-            contact.setLastName(lastName);
-            System.out.println("Enter Address");
-            String address = sc.nextLine();
-            contact.setAddress(address);
-            System.out.println("Enter City");
-            String city = sc.nextLine();
-            contact.setCity(city);
-            System.out.println("Enter State");
-            String state = sc.nextLine();
-            contact.setState(state);
-            System.out.println("Enter zip");
-            int zip = sc.nextInt();
-            contact.setZip(zip);
-            System.out.println("Enter Phone Number");
-            long phoneNumber = sc.nextLong();
-            contact.setPhoneNumber(phoneNumber);
-            System.out.println("Enter email");
-            String email = sc.next();
-            contact.setEmail(email);
-
-            addressBook.add(contact);
-            System.out.println(contact);
-        }
+public class AddressBookMain {
+    public static void main(String[] args) {
+        System.out.println("welcome to address book program");
+        Scanner input = new Scanner(System.in);
+        char choice;
+        IAddressBook addressBook = new AddressBook();
+        do {
+            System.out.println("Select your Option: \n1.Add new Contact \n2.Edit Contact");
+            int option = input.nextInt();
+            switch (option) {
+                case 1:
+                    addressBook.createContact();//Calling createContact method
+                    break;
+                case 2:
+                    addressBook.editContact();//Calling editContact method
+                    break;
+            }
+            System.out.println("Are you wish to continue:  Y?N");
+            choice = input.next().toUpperCase().charAt(0);
+        } while (choice != 'N');
+        System.out.println(addressBook);
     }
-
+}
