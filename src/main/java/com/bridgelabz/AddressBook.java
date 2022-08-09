@@ -1,14 +1,15 @@
 package com.bridgelabz;
-
-import java.util.ArrayList;//Importing ArrayList Class
-import java.util.Scanner;//Scanner class is to get User input
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.Scanner;
 
 public class AddressBook implements IAddressBook {
     static Scanner input = new Scanner(System.in);
-    ArrayList<Contact> contact = new ArrayList<>();//ArrayList Declaration
+    ArrayList<Contact> contact = new ArrayList<>();
 
     @Override
-    public void createContact() {
+    public void createContact() {//This method is calling for new contact
         Contact personDetails = new Contact();
         System.out.println("Enter Your First Name: ");
         personDetails.setFirstName(input.next());
@@ -22,16 +23,16 @@ public class AddressBook implements IAddressBook {
         personDetails.setState(input.next());
         System.out.println("Enter Your Zip code: ");
         personDetails.setZip(input.nextInt());
-        System.out.println("Enter Your Mobile Number: ");
-        personDetails.setPhoneNumber(input.nextLong());
         System.out.println("Enter Your Email Id: ");
         personDetails.setEmail(input.next());
+        System.out.println("Enter Your Mobile Number: ");
+        personDetails.setPhoneNumber(input.nextLong());
         contact.add(personDetails);
-        System.out.println("Contact added successfully.");
+        System.out.println("contact added successfully");
     }
 
     @Override
-    public void editContact() {
+    public void editContact() {//This method is called for edit a existing contact
         System.out.println("\nEnter First Name of person You want to edit :- ");
         String firstName = input.next();
         String userChoice;
@@ -93,7 +94,10 @@ public class AddressBook implements IAddressBook {
     }
 
     @Override
-    public void deleteContact() {
+    public void deleteContact() {//This method is called for delete a contact
+        if (contact.isEmpty()) {
+            System.out.println("address book is empty");
+        }
         System.out.println("\nEnter First Name of person You want to delete :- ");
         String firstName = input.next();
         String userChoice;
@@ -102,7 +106,7 @@ public class AddressBook implements IAddressBook {
             if (contact.get(i).getFirstName().equals(firstName)) {
                 do {
                     contact.remove(i);
-                    System.out.println("Contact deleted");
+                    System.out.println("contact deleted");
                     System.out.println("Are you wish to delete other Address fields: Y?N");
                     userChoice = input.next();
                 } while (userChoice.toUpperCase().equals("Y"));
@@ -113,23 +117,25 @@ public class AddressBook implements IAddressBook {
     }
 
     @Override
-    public void contactList() {
+    public void contactList() { //Add multiple person in Address Book
         if (contact.isEmpty()) {
             System.out.println("Your address book is empty.");
             return;
         }
         System.out.println("\n Address Book:");
-        for (Contact person : contact)
-        {
+        for (Contact person : contact) {
             System.out.println("contact" + person.getFirstName());
         }
-
-    }
-
-    @Override
-    public String toString() {
-        return "AddressBook{" +
-                "contact=" + contact +
-                '}';
+   }
+   @Override
+   public void readContact() { //To read Contact from AddressBook
+       if (contact.isEmpty()) {
+           System.out.println("Your address book is empty.");
+           return;
+       }
+       System.out.println("\n Address Book:");
+       for (Contact person : contact) {
+           System.out.println("contact" + person.getFirstName());
+       }
     }
 }
