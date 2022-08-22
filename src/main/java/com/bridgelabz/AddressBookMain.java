@@ -1,8 +1,7 @@
-/* Refactor to Add Multiple AddressBook
-to the System
+/* Refactor to Add no duplicate entry of same person
+in a  AddressBook
 */
 package com.bridgelabz;
-
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +26,7 @@ public class AddressBookMain {
             do {
                 System.out.println("Select the AddressBook");
                 for (Map.Entry<String, IAddressBook> entry : addressSystem.entrySet()) {
-                    System.out.println(entry.getKey());
+                   System.out.println(entry.getKey());
                 }
                 String bookName = input.next();
                 if (addressSystem.containsKey(bookName)) {
@@ -60,7 +59,6 @@ public class AddressBookMain {
             } while (choice != 'N');
             for (Map.Entry<String, IAddressBook> entry : addressSystem.entrySet()) {
                 System.out.println(entry.getKey() + "-" + entry.getValue());
-
             }
 
         }
