@@ -1,4 +1,4 @@
-/* Search person in a city or State
+/* View person by city or State
 in a  AddressBook
 */
 package com.bridgelabz;
