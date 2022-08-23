@@ -44,7 +44,9 @@ public class AddressBook  {
             }
         } while (status);
     }
-
+    /**
+     * Method to add contact
+     */
     public void add() {
         Contact contacts = new Contact();
         System.out.println("Enter the First name:");
@@ -105,30 +107,30 @@ public class AddressBook  {
                 System.out.println("1.Last Name\t2.Address\t3.City\t4.State\t5. Zip\t6.Phone Number\t7.Email");
                 switch (scan.nextInt()) {
                     case 1:
-                        System.out.println("Re-correct your Last Name");
+                        System.out.println("Re-enter your Last Name");
                         contacts.setLastName(scan.next());
                         break;
                     case 2:
-                        System.out.println("Re-correct your Address");
+                        System.out.println("Re-enter your Address");
                         contacts.setAddress(scan.next());
                         break;
                     case 3:
-                        System.out.println("Re-correct your City");
+                        System.out.println("Re-enter your City");
                         contacts.setCity(scan.next());
                         break;
                     case 4:
-                        System.out.println("Re-correct your State");
+                        System.out.println("Re-enter your State");
                         contacts.setState(scan.next());
                         break;
                     case 5:
-                        System.out.println("Re-correct your Zip");
+                        System.out.println("Re-enter your Zip");
                         contacts.setZip(scan.nextInt());
                         break;
                     case 6:
-                        System.out.println("Re-correct your Phone Number");
+                        System.out.println("Re-enter your Phone Number");
                         contacts.setPhoneNumber(scan.nextLong());
                     case 7:
-                        System.out.println("Re-correct your Email");
+                        System.out.println("Re-enter your Email");
                         contacts.setEmail(scan.next());
                 }
 
@@ -151,28 +153,34 @@ public class AddressBook  {
             }
         }
     }
-
+    /**
+     * Method to print contact
+     */
     public void print() {
         Iterator<Contact> it = list.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }
     }
-    /*
-    Methods for searching contacts based on city
+    /**
+    Methods for searching contacts based on city and get number of contact person
      */
     public void searchByCity() {
         System.out.println("Enter the city:");
         String city = scan.next();
         list.stream().filter(contacts -> contacts.getCity().equalsIgnoreCase(city)).forEach(contacts -> System.out.println(contacts));
+        long count = list.stream().filter(n -> n.getCity().equalsIgnoreCase(city)).count();
+        System.out.println("Number of Persons in City " + city + ":" + count);
     }
-    /*
-      Methods for searching contacts based on state
-       */
+    /**
+     Methods for searching contacts based on state and get number of contact person
+     */
     public void searchByState() {
         System.out.println("Enter the State:");
         String state = scan.next();
         list.stream().filter(contacts -> contacts.getState().equalsIgnoreCase(state)).forEach(contacts -> System.out.println(contacts));
+        long count = list.stream().filter(n -> n.getCity().equalsIgnoreCase(state)).count();
+        System.out.println("Number of Persons in State " + state + ":" + count);
     }
 
     @Override

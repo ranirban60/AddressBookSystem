@@ -1,6 +1,6 @@
-/* View person by city or State
-in a  AddressBook
-*/
+/** To get number of person i.e. count by city or State
+    in a  AddressBook
+ */
 package com.bridgelabz;
 
 import java.util.HashMap;
