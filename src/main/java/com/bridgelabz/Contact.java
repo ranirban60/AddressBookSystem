@@ -92,6 +92,10 @@ public class Contact {
             this.phoneNumber = phoneNumber;
             this.email = email;
         }
+        /**
+        * The String class represents character strings
+        * Overrides: toString in class Object
+         */
         @Override
         public String toString(){
             return "AddressBook{" +

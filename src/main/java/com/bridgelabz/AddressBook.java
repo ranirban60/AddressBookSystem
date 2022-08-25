@@ -10,7 +10,7 @@ public class AddressBook  {
 
     public void operation() {
         System.out.println("Enter number of contact you want to add");
-        int count = scan.nextInt();
+        int count = scan.nextInt();//scans the next token of the input as an int
         int contactCount = 1;
         while (contactCount <= count) {
             this.add();
@@ -46,6 +46,7 @@ public class AddressBook  {
     }
     /**
      * Method to add contact
+     * next() method finds and returns the next complete token from this scanner
      */
     public void add() {
         Contact contacts = new Contact();
@@ -129,6 +130,7 @@ public class AddressBook  {
                     case 6:
                         System.out.println("Re-enter your Phone Number");
                         contacts.setPhoneNumber(scan.nextLong());
+                        break;
                     case 7:
                         System.out.println("Re-enter your Email");
                         contacts.setEmail(scan.next());
@@ -179,10 +181,13 @@ public class AddressBook  {
         System.out.println("Enter the State:");
         String state = scan.next();
         list.stream().filter(contacts -> contacts.getState().equalsIgnoreCase(state)).forEach(contacts -> System.out.println(contacts));
-        long count = list.stream().filter(n -> n.getCity().equalsIgnoreCase(state)).count();
-        System.out.println("Number of Persons in State " + state + ":" + count);
+        long count = list.stream().filter(n -> n.getState().equalsIgnoreCase(state)).count();
+        System.out.println("Number of Persons in State " + state + " : " + count);
     }
-
+    /**
+     * The String class represents character strings
+     * Overrides: toString in class Object
+     */
     @Override
     public String toString() {
         return "AddressBook{" +
