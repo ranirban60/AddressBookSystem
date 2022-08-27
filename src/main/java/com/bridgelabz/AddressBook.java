@@ -28,6 +28,7 @@ public class AddressBook  {
             System.out.println("Enter 4 to search the contact based on City");
             System.out.println("Enter 5 to search the contact based on State");
             System.out.println("Enter 6 to sort the contacts based on Name");
+            System.out.println("Enter 7 to sort the contacts based on City or State or Zip");
             switch (scan.nextInt()) {
                 case 1:
                     add();
@@ -46,6 +47,9 @@ public class AddressBook  {
                     break;
                 case 6:
                     sortByName();
+                    break;
+                case 7:
+                    sortByCityOrStateOrZip();
                 default:
                     status = false;
             }
@@ -193,8 +197,19 @@ public class AddressBook  {
         System.out.println("Number of Persons in State " + state + " : " + count);
     }
     public void sortByName() {
-        //Use Sorted Operation for sort the contacts by name
+        //Use Sorted Operation for sort the contacts by Name
         list.stream().sorted(Comparator.comparing(Contact::getFirstName)).forEach(System.out::println);
+        System.out.println();
+    }
+    public void sortByCityOrStateOrZip(){
+        //Use Sorted Operation for sort the contacts by City
+        list.stream().sorted(Comparator.comparing(Contact::getCity)).forEach(System.out::println);
+        System.out.println();
+        //Use Sorted Operation for sort the contacts by State
+        list.stream().sorted(Comparator.comparing(Contact::getState)).forEach(System.out::println);
+        System.out.println();
+        //Use Sorted Operation for sort the contacts by Zip
+        list.stream().sorted(Comparator.comparing(Contact::getZip)).forEach(System.out::println);
         System.out.println();
     }
             /**

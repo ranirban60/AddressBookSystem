@@ -1,6 +1,6 @@
 /** Ability to sort the entries in the
  address book alphabetically by
- Person’s name
+ City, State or Zip
  */
 package com.bridgelabz;
 
