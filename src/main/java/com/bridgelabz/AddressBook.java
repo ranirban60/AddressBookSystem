@@ -1,16 +1,19 @@
 package com.bridgelabz;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook  {
+    /**
+    ArrayList constructs an empty list with an initial capacity of ten
+     */
     public List<Contact> list = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
 
     public void operation() {
         System.out.println("Enter number of contact you want to add");
-        int count = scan.nextInt();//scans the next token of the input as an int
+        /**
+        nextInt() scans the next token of the input as an int
+         */
+        int count = scan.nextInt();
         int contactCount = 1;
         while (contactCount <= count) {
             this.add();
@@ -24,6 +27,7 @@ public class AddressBook  {
             System.out.println("Enter 3 to Delete");
             System.out.println("Enter 4 to search the contact based on City");
             System.out.println("Enter 5 to search the contact based on State");
+            System.out.println("Enter 6 to sort the contacts based on Name");
             switch (scan.nextInt()) {
                 case 1:
                     add();
@@ -39,11 +43,15 @@ public class AddressBook  {
                     break;
                 case 5:
                     searchByState();
+                    break;
+                case 6:
+                    sortByName();
                 default:
                     status = false;
             }
         } while (status);
     }
+
     /**
      * Method to add contact
      * next() method finds and returns the next complete token from this scanner
@@ -184,14 +192,19 @@ public class AddressBook  {
         long count = list.stream().filter(n -> n.getState().equalsIgnoreCase(state)).count();
         System.out.println("Number of Persons in State " + state + " : " + count);
     }
-    /**
-     * The String class represents character strings
-     * Overrides: toString in class Object
-     */
-    @Override
-    public String toString() {
-        return "AddressBook{" +
-                "list=" + list +
-                '}';
+    public void sortByName() {
+        //Use Sorted Operation for sort the contacts by name
+        list.stream().sorted(Comparator.comparing(Contact::getFirstName)).forEach(System.out::println);
+        System.out.println();
     }
-}
+            /**
+             * The String class represents character strings
+             * Overrides: toString in class Object
+             */
+            @Override
+            public String toString () {
+                return "AddressBook{" +
+                        "list=" + list +
+                        '}';
+            }
+        }

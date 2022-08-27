@@ -1,5 +1,4 @@
 package com.bridgelabz;
-
 /**
  * Template class for creating a contact
  */
