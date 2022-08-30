@@ -3,7 +3,7 @@ import java.util.*;
 
 public class AddressBook  {
     /**
-    ArrayList constructs an empty list with an initial capacity of ten
+    * ArrayList constructs an empty list with an initial capacity of ten
      */
     public List<Contact> list = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class AddressBook  {
     public void operation() {
         System.out.println("Enter number of contact you want to add");
         /**
-        nextInt() scans the next token of the input as an int
+        * nextInt() scans the next token of the input as an int
          */
         int count = scan.nextInt();
         int contactCount = 1;
@@ -29,6 +29,7 @@ public class AddressBook  {
             System.out.println("Enter 5 to search the contact based on State");
             System.out.println("Enter 6 to sort the contacts based on Name");
             System.out.println("Enter 7 to sort the contacts based on City or State or Zip");
+            System.out.println("Enter 8 to read and write the contacts ");
             switch (scan.nextInt()) {
                 case 1:
                     add();
@@ -50,6 +51,9 @@ public class AddressBook  {
                     break;
                 case 7:
                     sortByCityOrStateOrZip();
+                    break;
+                case 8:
+                    File_read_and_write();
                 default:
                     status = false;
             }
@@ -177,7 +181,7 @@ public class AddressBook  {
         }
     }
     /**
-    Methods for searching contacts based on city and get number of contact person
+    * Methods for searching contacts based on city and get number of contact person
      */
     public void searchByCity() {
         System.out.println("Enter the city:");
@@ -187,7 +191,7 @@ public class AddressBook  {
         System.out.println("Number of Persons in City " + city + ":" + count);
     }
     /**
-     Methods for searching contacts based on state and get number of contact person
+     * Methods for searching contacts based on state and get number of contact person
      */
     public void searchByState() {
         System.out.println("Enter the State:");
@@ -211,6 +215,12 @@ public class AddressBook  {
         //Use Sorted Operation for sort the contacts by Zip
         list.stream().sorted(Comparator.comparing(Contact::getZip)).forEach(System.out::println);
         System.out.println();
+    }
+    private  void File_read_and_write() {
+        AddressBookIO.createFile();
+        String input = list.toString();
+        AddressBookIO.add_details_to_file(input);
+        AddressBookIO.read_details_to_file();
     }
             /**
              * The String class represents character strings

@@ -1,7 +1,3 @@
-/** Ability to sort the entries in the
- address book alphabetically by
- City, State or Zip
- */
 package com.bridgelabz;
 
 import java.util.HashMap;
@@ -30,6 +26,7 @@ public class AddressBookMain {
             map.put(bookName, addressBook);
             i++;
         }
+        System.out.println();
         System.out.println(map);
     }
     }
